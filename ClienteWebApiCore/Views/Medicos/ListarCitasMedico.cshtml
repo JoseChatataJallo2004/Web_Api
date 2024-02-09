@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ClienteWebApiCore.Models.PA_CITAS_MEDICO>
+
+@{
+    ViewData["Title"] = "ListarCitasMedico";
+}
+
+<h1>ListarCitasMedico</h1>
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        Medico: @Html.DropDownList("codmed",(SelectList)ViewBag.medicos,"Seleccione",new {@class="form-select"})
+
+        <button class="btn btn-outline-success">Consultar</button>  |
+        <a asp-action="listaMedicos" class="btn btn-outline-danger">Listar Medicos</a>
+
+    </div>
+} 
+<br />
+<p>
+
+    Cantidad de Citas : @ViewBag.cantidad
+
+</p>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nrocita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codpac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nompac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pago)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nrocita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codpac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nompac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pago)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

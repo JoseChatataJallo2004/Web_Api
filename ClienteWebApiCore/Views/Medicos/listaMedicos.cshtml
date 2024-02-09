@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ClienteWebApiCore.Models.Medicos>
+
+@{
+    ViewData["Title"] = "listaMedicos";
+}
+
+<h1>listaMedicos</h1>
+
+<p>
+    <a asp-action="GrabarMedico" class="btn btn-outline-primary">Nuevo Medico</a> |
+    <a asp-action="ListarCitasMedico" class="btn btn-outline-danger">Consultar Medico</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.codmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nommed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anio_colegio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codesp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coddis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eliminado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nommed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anio_colegio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codesp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coddis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eliminado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
